@@ -70,8 +70,7 @@ function average($students)
     foreach ($students as $student) {
         $total += $student["grade"];
     }
-    $total = $total / count($students);
-    return $total;
+    return $total / count($students);
 }
 
 function passedStudents($students)
@@ -84,13 +83,13 @@ function passedStudents($students)
     }
     return $passed;
 }
-
 ?>
 
 <style>
     .container {
         display: flex;
-        justify-content: center;
+        flex-direction: column;
+        align-items: center;
         margin-top: 50px;
     }
 
@@ -100,8 +99,7 @@ function passedStudents($students)
         text-align: center;
     }
 
-    th,
-    td {
+    th, td {
         border: 1px solid #ccc;
         padding: 10px;
     }
@@ -110,9 +108,9 @@ function passedStudents($students)
         background-color: #f2f2f2;
     }
 
-    .footer-row {
-        background-color: #fafafa;
-        font-weight: bold;
+    .statistics {
+        text-align: center;
+        margin-top: 20px;
     }
 </style>
 
@@ -133,12 +131,13 @@ function passedStudents($students)
                 <td><?= calculateStatus($student["grade"]) ?></td>
             </tr>
         <?php } ?>
-
-        <tr class="footer-row">
-            <td>Max grade: <?= maxGrade($students) ?></td>
-            <td>Min grade: <?= minGrade($students) ?></td>
-            <td>Average: <?= average($students) ?></td>
-            <td>Passed: <?= passedStudents($students) ?></td>
-        </tr>
     </table>
+
+    <div class="statistics">
+        <h2>Students Statistics</h2>
+        <p>Maximum Grade: <?= maxGrade($students) ?></p>
+        <p>Minimum Grade: <?= minGrade($students) ?></p>
+        <p>Average Grade: <?= average($students) ?></p>
+        <p>Number of Passed Students: <?= passedStudents($students) ?></p>
+    </div>
 </div>
